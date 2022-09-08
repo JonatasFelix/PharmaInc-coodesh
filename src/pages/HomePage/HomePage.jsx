@@ -7,9 +7,10 @@ import PatientsTable from "../../components/PatientsTable/PatientsTable";
 import { Container } from "@mui/material";
 import ButtonLoaderMore from "../../components/ButtonLoaderMore/ButtonLoaderMore";
 import ModalProfile from "../../components/ModalProfile/ModalProfile";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 const HomePage = (props) => {
-  const { patients, loading } = props;
+  const { patients, loading, search } = props;
   const location = useLocation();
   const parsed = qs.parse(location.search);
   const { id } = parsed;
@@ -25,7 +26,8 @@ const HomePage = (props) => {
     <>
       <ResponsiveAppBar />
       <Container sx={{ margim: "0 auto" }}>
-        <PatientsTable patients={patients} loading={loading} page={page} />
+        <SearchBar />
+        <PatientsTable patients={patients} loading={loading} page={page} search={search} />
         <ButtonLoaderMore
           setPage={setPage}
           page={page}
@@ -47,6 +49,7 @@ const mapStateToProps = (state) => {
   return {
     patients: state.PatientsReducers.patients,
     loading: state.PatientsReducers.loading,
+    search: state.FiltersReducers.search,
   };
 };
 

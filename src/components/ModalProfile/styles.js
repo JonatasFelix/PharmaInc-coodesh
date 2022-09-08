@@ -16,6 +16,12 @@ export const Box = styled.div`
 
 `
 
+export const CloseButton = styled.div`
+    position: absolute;
+    right: 25px;
+    top: 5px;
+`
+
 export const ProfileImage = styled.img`
     position: absolute;
     top: -61px;
@@ -30,10 +36,15 @@ export const ProfileName = styled.h1`
     text-align: center;
 `
 
-export const ProfileEmail = styled.h2`
+export const ProfileAge = styled.span`
+    font-weight: 100;
+`
+
+export const ProfileId = styled.h2`
     text-align: center;
     font-size: 0.9rem;
     font-weight: 100;
+    margin-top: 4px;
 `
 export const ProfileInfo = styled.div`
     display: flex;
@@ -54,4 +65,32 @@ export const ProfileLocation = styled.h2`
     font-size: 0.9rem;
     font-weight: 100;
     position: relative;
+`
+
+export const Separator = styled.hr`
+    width: 100%;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+`
+export const BoxInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+`
+
+export const BoxInfoData = styled.div`
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 320px;
+`
+
+export const InfoText = styled.span`
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
 `
