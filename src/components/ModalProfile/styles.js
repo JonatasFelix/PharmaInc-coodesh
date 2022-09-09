@@ -94,3 +94,9 @@ export const InfoText = styled.span`
     align-items: center;
     justify-content: center;
 `
+
+export const NotFound = styled.div`
+    text-align: center;
+    padding-bottom: 65px;
+    border: none;
+`

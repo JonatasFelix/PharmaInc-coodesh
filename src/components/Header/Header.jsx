@@ -6,16 +6,26 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
+import { useNavigate } from "react-router-dom";
+import { goToHome } from "../../routes/Coordinates";
+import MedicationIcon from "@mui/icons-material/Medication";
 
-import MedicationIcon from '@mui/icons-material/Medication';
+const Header = () => {
 
-const ResponsiveAppBar = () => {
+  const navigate = useNavigate();
+
+  const handleHomeClick = () => {
+    goToHome(navigate);
+  }
+
   return (
     <AppBar position="static">
       <Container>
         <Toolbar disableGutters>
-          <MedicationIcon sx={{ flexGrow: 0, display: "flex", mr: 1 }} />
+          <MedicationIcon onClick={handleHomeClick} sx={{ flexGrow: 0, display: "flex", mr: 1, cursor: "pointer" }}/>
+
           <Typography
+            onClick={handleHomeClick}
             variant="h6"
             noWrap
             component="a"
@@ -25,6 +35,7 @@ const ResponsiveAppBar = () => {
               flexGrow: 1,
               fontFamily: "Roboto",
               fontWeight: 700,
+              cursor: "pointer",
             }}
           >
             Pharma Inc
@@ -40,4 +51,4 @@ const ResponsiveAppBar = () => {
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+export default Header;

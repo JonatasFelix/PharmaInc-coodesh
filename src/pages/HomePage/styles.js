@@ -5,10 +5,10 @@ export const BoxSearch = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 25px;
+    width: 100%;
+`
 
-    @media (max-width: 900px) {
-        display: block;
-        margin-bottom: 20px;
-    }
-
+export const BoxText = styled.div`
+    text-align: center;
+    margin-top: 20px;
 `

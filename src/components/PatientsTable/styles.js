@@ -8,6 +8,14 @@ export const Table = styled.table`
   margin-top: 25px;
   box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
   background-color: #fff;
+  position: relative;
+
+  .BirthMobile {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
 `;
 
 export const TableHeader = styled.tr`
@@ -80,4 +88,22 @@ export const TableDataActions = styled.td`
   justify-content: center;
   align-items: center;
   height: 44px;
+
+  .icon {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+`
+
+export const NotFoundMessage = styled.p`
+  text-align: center;
+  margin: 25px 0;
+  left: 50%;
+  transform:  translate(-50%, 0);
+  position: absolute;
+
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 900;
 `

@@ -20,7 +20,7 @@ const ModalProfile = ({ profile, openModal, setOpenModal }) => {
 
   const handleClose = () => {
     setOpenModal(false);
-    navigate(-1);
+    navigate("/");
   };
 
   const genderIcon = (gender) => {
@@ -105,6 +105,23 @@ const ModalProfile = ({ profile, openModal, setOpenModal }) => {
     );
   };
 
+
+  const UserNotFound = () => {
+    return (
+      <s.NotFound>
+        <s.CloseButton>
+
+          <IconButton onClick={handleClose} aria-label="delete">
+            <CloseIcon />
+          </IconButton>
+
+        </s.CloseButton>
+
+        <h1>User not found</h1>
+      </s.NotFound>
+    );
+  }
+
   return (
     <Modal
       open={openModal}
@@ -112,7 +129,7 @@ const ModalProfile = ({ profile, openModal, setOpenModal }) => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <s.Box>{profile.length ? <Profile /> : <div>User Not Found</div>}</s.Box>
+      <s.Box>{profile.length ? <Profile /> : <UserNotFound/>}</s.Box>
     </Modal>
   );
 };

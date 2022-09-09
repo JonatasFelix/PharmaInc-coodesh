@@ -14,14 +14,14 @@ const SelectBar = ({value, label, change, options}) => {
     }
 
         return (
-            <Paper sx={{ width: {md: "100%", lg: "45%"} }}>
+            <Paper sx={{ width: {xs: "100%", sm: "100%", md: "100%", lg: "45%"} }}>
                 <Autocomplete
                     value={value}
                     inputValue={value}
                     onInputChange={(event, newInputValue) => {
                         handleChange(newInputValue);
                     }}
- 
+                    isOptionEqualToValue={(option, value) => option.label === value.label}
                     id="controllable-states-demo"
                     options={options}
                     renderInput={(params) => <TextField {...params} label={label} />}

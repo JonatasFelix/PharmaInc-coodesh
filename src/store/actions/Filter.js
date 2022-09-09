@@ -1,4 +1,4 @@
-import { CHANGE_SEARCH_PATIENTS, CHANGE_SEARCH_COUNTRY, CHANGE_GENDER } from '../actions/ActionsType';
+import { CHANGE_SEARCH_PATIENTS, CHANGE_SEARCH_COUNTRY, CHANGE_GENDER, SET_LIST_LENGTH } from '../actions/ActionsType';
 
 const changeSearch = (payload) => {
     return {
@@ -21,4 +21,11 @@ const changeGender = (payload) => {
     }
 }
 
-export { changeSearch, changeCountry, changeGender };
+const setListLength = (payload) => {
+    return {
+        type: SET_LIST_LENGTH,
+        payload
+    }
+}
+
+export { changeSearch, changeCountry, changeGender, setListLength };
