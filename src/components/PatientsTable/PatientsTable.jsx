@@ -7,17 +7,16 @@ import Button from "@mui/material/Button";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import Skeleton from '@mui/material/Skeleton'
 
-const PatientsTable = ({patients, loading, page, search, orderBy, orders}) => {
+const PatientsTable = ({patients, loading, page, search, gender, country}) => {
 
   const navigate = useNavigate();
   const location = useLocation().search;
   const loadingArray = Array(10).fill(0);
 
-  console.log(location)
-
   const [orderItem, setOrderItem] = useState("name");
   const [order, setOrder] = useState("asc");
 
+  console.log(gender)
 
   const handleOrder = (item) => {
     setOrderItem(item);
@@ -42,6 +41,8 @@ const PatientsTable = ({patients, loading, page, search, orderBy, orders}) => {
   const Tabela = () => {
     return patients
     .filter((p) => !search || p.name.first.toLowerCase().includes(search.toLowerCase()) || p.name.last.toLowerCase().includes(search.toLowerCase()))
+    .filter((p) => !country || p.location.country.toLowerCase().includes(country.toLowerCase()))
+    .filter((p) => !gender || p.gender === gender)
     .sort((a, b) => orderItem !== "name" || order === "asc" ? a[orderItem].first> b[orderItem].first ? 1 : -1 : a[orderItem].first< b[orderItem].first ? 1 : -1)
     .sort((a, b) => orderItem !== "gender" || order === "asc" ? a[orderItem] > b[orderItem] ? 1 : -1 : a[orderItem] < b[orderItem] ? 1 : -1)
     .sort((a, b) => orderItem !== "dob" || order === "asc" ? a[orderItem].age > b[orderItem].age ? 1 : -1 : a[orderItem].age < b[orderItem].age ? 1 : -1)

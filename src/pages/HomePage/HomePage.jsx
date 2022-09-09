@@ -8,15 +8,19 @@ import { Container } from "@mui/material";
 import ButtonLoaderMore from "../../components/ButtonLoaderMore/ButtonLoaderMore";
 import ModalProfile from "../../components/ModalProfile/ModalProfile";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import SelectBar from "../../components/SelectBar/SelectBar";
+import countries from "../../utils/countries";
+import { BoxSearch } from "./styles";
 
 const HomePage = (props) => {
-  const { patients, loading, search } = props;
+  const { patients, loading, search, country, gender } = props;
   const location = useLocation();
   const parsed = qs.parse(location.search);
   const { id } = parsed;
 
   const [page, setPage] = useState(10);
   const [openModal, setOpenModal] = useState(id ? true : false);
+  const genderOptions = [{label: "male"}, {label: "female"}]
 
   useEffect(() => {
     id && setOpenModal(true);
@@ -26,8 +30,22 @@ const HomePage = (props) => {
     <>
       <ResponsiveAppBar />
       <Container sx={{ margim: "0 auto" }}>
-        <SearchBar />
-        <PatientsTable patients={patients} loading={loading} page={page} search={search} />
+
+        <BoxSearch >
+          <SearchBar search={search} country={country} />
+          <SelectBar value={country} label="Search Country" change="CHANGE_SEARCH_COUNTRY" options={countries} />
+          <SelectBar value={gender} label="Select Gender" change="CHANGE_GENDER" options={genderOptions}/>
+        </BoxSearch>
+
+        <PatientsTable 
+          patients={patients} 
+          loading={loading} 
+          page={page} 
+          search={search}
+          country={country}
+          gender={gender}
+        />
+
         <ButtonLoaderMore
           setPage={setPage}
           page={page}
@@ -50,6 +68,8 @@ const mapStateToProps = (state) => {
     patients: state.PatientsReducers.patients,
     loading: state.PatientsReducers.loading,
     search: state.FiltersReducers.search,
+    country: state.FiltersReducers.country,
+    gender: state.FiltersReducers.gender
   };
 };
 
