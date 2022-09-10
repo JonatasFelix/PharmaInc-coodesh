@@ -13,7 +13,7 @@ import countries from "../../utils/countries";
 import * as s from "./styles";
 import { CHANGE_SEARCH_PATIENTS, CHANGE_SEARCH_COUNTRY, CHANGE_GENDER } from "../../store/actions/ActionsType";
 
-const HomePage = ({ patients, loading, search, country, gender, listLength }) => {
+const HomePage = ({ patients, loading, search, country, gender, listLength, error }) => {
 
   const location = useLocation();
   const parsed = qs.parse(location.search);
@@ -69,6 +69,7 @@ const HomePage = ({ patients, loading, search, country, gender, listLength }) =>
           search={search}
           country={country}
           gender={gender}
+          error={error}
         />
 
         <ButtonLoaderMore setPage={setPage} page={page} lenght={listLength} />
@@ -91,6 +92,7 @@ const mapStateToProps = (state) => {
     country: state.FiltersReducers.country,
     gender: state.FiltersReducers.gender,
     listLength: state.FiltersReducers.listLength,
+    error: state.PatientsReducers.error,
   };
 };
 

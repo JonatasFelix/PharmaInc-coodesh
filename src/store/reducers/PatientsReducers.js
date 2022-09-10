@@ -3,6 +3,7 @@ import { ADD_PATIENTS } from '../actions/ActionsType';
 const initialState = {
     patients: [],
     loading: true,
+    error: false
 };
 
 const PatientsReducers = (state = initialState, action) => {
@@ -12,6 +13,7 @@ const PatientsReducers = (state = initialState, action) => {
                 ...state,
                 patients: action.payload.list,
                 loading: action.payload.loading,
+                error: action.payload.error
 
             };
         default:

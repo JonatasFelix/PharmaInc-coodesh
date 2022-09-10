@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { setListLength } from "../../store/actions/Filter";
 import Zoom from '@mui/material/Zoom';
 
-const PatientsTable = ({patients, loading, page, search, gender, country}) => {
+const PatientsTable = ({patients, loading, page, search, gender, country, error}) => {
 
   const navigate = useNavigate();
   const loadingArray = Array(10).fill(0);
@@ -90,7 +90,8 @@ const PatientsTable = ({patients, loading, page, search, gender, country}) => {
           </s.TableHeader>
           {loading ? (<TabelaLoading />) : (<Tabela />)}
         </tbody>
-        {patientsFiltered.length === 0 && !loading && (<s.NotFoundMessage>No patients found</s.NotFoundMessage>)}
+        {patientsFiltered.length === 0 && !loading && !error && (<s.NotFoundMessage>No patients found</s.NotFoundMessage>)}
+        {!loading && error && (<s.NotFoundMessage>Something went wrong</s.NotFoundMessage>)}
       </s.Table>
       </Zoom>
     </>

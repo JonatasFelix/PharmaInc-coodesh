@@ -6,6 +6,7 @@ const getAllPatients = async (dispatch) => {
 
     let list = [];
     let loading = true;
+    let error = false;
 
     await axios.get(`${BASE_URL}/?results=200`)
         .then((res) => {
@@ -14,9 +15,10 @@ const getAllPatients = async (dispatch) => {
         })
         .catch((err) => {
            loading = false;
+            error = true;
         });
 
-    dispatch(AddPatients({ list, loading }));
+    dispatch(AddPatients({ list, loading, error }));
 
 }
 
